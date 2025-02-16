@@ -28,8 +28,10 @@ jobs:
         run: npm run export # или yarn export
         # Убедитесь, что в next.config.js добавлен параметр trailingSlash: true
 
-      - name: Deploy 🚀
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Upload artifact 📦
+        uses: actions/upload-pages-artifact@v2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out # папка с экспортированными файлами (по умолчанию .next)
+          path: ./out # папка с экспортированными файлами (по умолчанию .next)
+
+      - name: Deploy to GitHub Pages 🚀
+        uses: actions/deploy-pages@v4
