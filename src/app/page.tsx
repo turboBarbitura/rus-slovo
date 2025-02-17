@@ -8,19 +8,19 @@ import {WhyUs} from "@/components/WhyUs";
 import {Metadata} from "next";
 
 export const metadata: Metadata = {
-    title: "Замена иностранных слов на русские | рус-слово.рф",
+    title: "Замена иностранных слов на русские | Слова по-русски",
     description: "Ваш сайт будет соответствовать федеральному закону №53-ФЗ.",
     icons: {
         icon: "/favicon.ico",
     },
-    metadataBase: new URL("https://рус-слово.рф"),
+    metadataBase: new URL("https://slova-po-russki.ru"),
     robots: {
         index: true,
         follow: true,
         "max-image-preview": "large",
     },
     alternates: {
-        canonical: "https://рус-слово.рф",
+        canonical: "https://slova-po-russki.ru",
         languages: {
             ru: "./",
             "x-default": "./",
