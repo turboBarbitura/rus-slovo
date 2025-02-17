@@ -1,4 +1,5 @@
 import {Button} from "@/components/Button";
+import Link from "next/link";
 
 export const HeroSection = () => {
     return (
@@ -8,7 +9,7 @@ export const HeroSection = () => {
                     <br className="hidden tablet:inline"/> под
                     <br className="tablet:hidden"/> Федеральный закон № 53-Ф3 <br/>«О государственном языке Российской Федерации»  </h1>
                 <p className="text-lg laptop:text-2xl my-6 text-black">Замена иностранных слов на русские <br className="tablet:hidden"/> без потери смысла</p>
-                <Button>Оставить заявку</Button>
+                <Button><Link href="#order-form">Оставить заявку</Link></Button>
             </div>
         </section>
     )
