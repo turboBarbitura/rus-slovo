@@ -72,6 +72,25 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primary: {
+          50: '#ecfdf5',
+          100: '#d1fae5',
+          500: '#10b981',
+          700: '#047857', // Основной зелёный из референса
+          800: '#065f46',
+          900: '#064e3b',
+        },
+        accent: {
+          50: '#fff7ed',
+          100: '#ffedd5',
+          400: '#fb923c', // Оранжевый/терракотовый
+          500: '#f97316',
+          600: '#ea580c',
+        },
+        cream: {
+          50: '#fafaf9', // stone-50
+          100: '#f5f5f4', // stone-100
+        }
       },
     },
   },
