@@ -54,6 +54,7 @@ const faqJsonLd = {
 };
 
 export default function HomePage() {
+  const siteCount = 72
   return (
     <main className="min-h-screen bg-cream-50">
       {/* JSON-LD Schema.org */}
@@ -81,24 +82,24 @@ export default function HomePage() {
             </h1>
             
             <p className="text-lg md:text-xl text-gray-200 mb-4 max-w-3xl mx-auto">
-              Единственный сервис в РФ, который дает письменную гарантию сохранности ваших SEO-позиций после лингвистической экспертизы.
+              Единственный сервис в РФ, который дает гарантию сохранности ваших SEO-позиций после лингвистической экспертизы.
             </p>
             
             <p className="text-2xl md:text-3xl font-bold text-white mb-10">
-              Уже адаптировали <span className="text-accent-400">832</span> сайта
+              Уже адаптировали <span className="text-accent-400">{siteCount}</span> сайта
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
                 href="#lead-form"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent-500 hover:bg-accent-600 text-white font-bold rounded-lg transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                className="max-w-[500px] w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent-500 hover:bg-accent-600 text-white font-bold rounded-lg transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
               >
                 Бесплатный аудит за 24 часа
                 <ArrowRightIcon className="w-5 h-5" />
               </Link>
               <Link
                 href="#calculator"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent border-2 border-white/30 hover:border-white text-white font-semibold rounded-lg transition-all hover:bg-white/10"
+                className="max-w-[500px] w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent border-2 border-white/30 hover:border-white text-white font-semibold rounded-lg transition-all hover:bg-white/10"
               >
                 Калькулятор стоимости
               </Link>
@@ -131,19 +132,21 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Нам доверяют крупнейшие бренды и малый бизнес по всей России
+              Нам доверяют крупнейшие бренды и бизнес по всей России
             </h2>
             
             {/* Счётчик */}
             <div className="inline-flex flex-col items-center bg-primary-50 rounded-2xl p-8 border border-primary-100">
-              <span className="text-5xl md:text-7xl font-bold text-primary-700 mb-2">832</span>
+              <span className="text-5xl md:text-7xl font-bold text-primary-700 mb-2">{siteCount}</span>
               <span className="text-gray-600 font-medium">сайта уже защищены от штрафов</span>
-              <span className="text-xs text-gray-400 mt-1">Данные на 10 марта 2026 года</span>
+              <span className="text-xs text-gray-400 mt-1">
+                {new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' })}
+              </span>
             </div>
           </div>
 
           {/* Логотипы клиентов (заглушки) */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-16">
+          {/* <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-16">
             {['ТехноРай', 'Шеф-хаус', 'White Lotus', 'Red Hills Sochi', 'Траст-Капитал', 'PlusCloud'].map((name) => (
               <div 
                 key={name} 
@@ -152,10 +155,10 @@ export default function HomePage() {
                 {name}
               </div>
             ))}
-          </div>
+          </div> */}
 
           {/* Кейс и видеоотзыв */}
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {/* <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <div className="bg-cream-50 p-8 rounded-2xl border border-stone-200">
               <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
                 <ChartBarIcon className="w-6 h-6 text-green-600" />
@@ -183,7 +186,7 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -279,7 +282,7 @@ export default function HomePage() {
             </p>
           </div>
           <Link 
-            href="/law-168-fz"
+            href="/168-fz"
             className="inline-flex items-center gap-2 text-primary-700 font-semibold hover:text-primary-800 underline underline-offset-4"
           >
             Подробный разбор закона 168-ФЗ

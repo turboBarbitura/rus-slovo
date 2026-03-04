@@ -2,8 +2,11 @@
 
 import { useState } from 'react';
 import { EnvelopeIcon, LinkIcon, PhoneIcon, PaperAirplaneIcon } from '@heroicons/react/24/outline';
+import emailjs from '@emailjs/browser';
+import { Bounce, toast } from 'react-toastify';
 
 interface FormData {
+  name: string;
   url: string;
   email: string;
   phone: string;
@@ -11,6 +14,7 @@ interface FormData {
 
 export default function LeadForm() {
   const [formData, setFormData] = useState<FormData>({
+    name: '',
     url: '',
     email: '',
     phone: '',
@@ -25,16 +29,56 @@ export default function LeadForm() {
     
     setIsSubmitting(true);
     
-    // Имитация отправки на API
-    console.log('Lead form submitted:', formData);
-    
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    setFormData({ url: '', email: '', phone: '' });
-    
-    setTimeout(() => setIsSuccess(false), 5000);
+    const templateParams = {
+      name: formData.name || 'Не указано',
+      phone: formData.phone || 'Не указан',
+      email: formData.email,
+      website: formData.url,
+      comment: 'Заявка на бесплатный аудит',
+    };
+
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string,
+        templateParams,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string,
+      );
+
+      toast('Заявка успешно отправлена!', {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+        transition: Bounce,
+        progressClassName: 'progress',
+        className: 'my_toast_body',
+      });
+
+      setIsSuccess(true);
+      setFormData({ name: '', url: '', email: '', phone: '' });
+      
+      setTimeout(() => setIsSuccess(false), 5000);
+    } catch (error) {
+      console.error('FAILED...', error);
+      toast('Произошла ошибка при отправке заявки. Попробуйте позже.', {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+        transition: Bounce,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -56,6 +100,13 @@ export default function LeadForm() {
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Скрытое поле name для совместимости с шаблоном emailjs */}
+          <input
+            type="hidden"
+            name="name"
+            value={formData.name}
+            onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+          />
           <div>
             <label htmlFor="url" className="block text-sm font-medium text-gray-700 mb-2">
               URL сайта <span className="text-red-500">*</span>
