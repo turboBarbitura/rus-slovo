@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { EnvelopeIcon, LinkIcon, PhoneIcon, PaperAirplaneIcon } from '@heroicons/react/24/outline';
 import emailjs from '@emailjs/browser';
 import { Bounce, toast } from 'react-toastify';
+import Link from 'next/link';
 
 interface FormData {
   name: string;
@@ -21,11 +22,12 @@ export default function LeadForm() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [agreed, setAgreed] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.url || !formData.email) return;
+    if (!formData.url || !formData.email || !agreed) return;
     
     setIsSubmitting(true);
     
@@ -84,10 +86,10 @@ export default function LeadForm() {
   return (
     <div className="w-full max-w-2xl mx-auto bg-white rounded-2xl shadow-xl p-8 md:p-10 border border-stone-200">
       <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center">
-        Получите бесплатный аудит за 24 часа
+        Получите бесплатный аудит
       </h3>
       <p className="text-gray-600 text-center mb-8">
-        Проверим ваш сайт по 25 параметрам и пришлем PDF-отчет с рекомендациями
+        Проверим ваш сайт и пришлем отчет с рекомендациями
       </p>
 
       {isSuccess ? (
@@ -160,9 +162,24 @@ export default function LeadForm() {
             </div>
           </div>
 
+          <label className="flex items-center gap-3 cursor-pointer">
+            <input
+              type="checkbox"
+              checked={agreed}
+              onChange={(e) => setAgreed(e.target.checked)}
+              className="w-4 h-4 text-accent-500 border-gray-300 rounded focus:ring-accent-500"
+            />
+            <span className="text-xs text-gray-600">
+              Я даю{' '}
+              <Link href="/privacy" target="_blank" className="text-accent-600 hover:text-accent-700 underline">
+                согласие на обработку персональных данных
+              </Link>
+            </span>
+          </label>
+
           <button
             type="submit"
-            disabled={isSubmitting}
+            disabled={isSubmitting || !agreed}
             className="w-full flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-600 text-white font-semibold py-4 px-6 rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
           >
             {isSubmitting ? (
@@ -177,12 +194,6 @@ export default function LeadForm() {
               </>
             )}
           </button>
-
-          <p className="text-xs text-gray-500 text-center flex items-center justify-center gap-1">
-            <span className="text-green-500">✓</span> Не передаем данные третьим лицам
-            <span className="mx-2">•</span>
-            <span className="text-green-500">✓</span> Без спама
-          </p>
         </form>
       )}
     </div>

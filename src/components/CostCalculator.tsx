@@ -115,7 +115,7 @@ export default function CostCalculator() {
           {[
             { id: 'app', label: 'Мобильное приложение', extra: '+30%' },
             { id: 'email', label: 'Email-рассылки и скрипты', extra: '+15%' },
-            { id: 'print', label: 'Полиграфия и вывески', extra: '+20%' },
+            // { id: 'print', label: 'Полиграфия и вывески', extra: '+20%' },
           ].map((item) => (
             <label
               key={item.id}
@@ -143,8 +143,8 @@ export default function CostCalculator() {
         </h3>
         <div className="flex flex-col sm:flex-row gap-3">
           {[
-            { value: 'base', label: 'Базовый (7-10 дней)', extra: 'базовая цена' },
-            { value: 'vip', label: 'VIP (старт за 24 часа)', extra: '+30%' },
+            { value: 'base', label: 'Базовый (~2 недели)', extra: 'базовая цена' },
+            { value: 'vip', label: 'VIP (старт за 48 часа)', extra: '+30%' },
           ].map((option) => (
             <label
               key={option.value}

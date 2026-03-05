@@ -11,6 +11,7 @@ import {
   BookOpenIcon
 } from '@heroicons/react/24/outline';
 import FAQAccordion from '@/components/FAQAccordion';
+import LeadForm from '@/components/LeadForm';
 
 export const metadata: Metadata = {
   title: 'Закон 168-ФЗ о русском языке: полный разбор для бизнеса 2026',
@@ -36,7 +37,7 @@ const faqData = [
     answer: 'Это техническая терминология, признанная исключением. Их можно использовать.'
   },
   {
-    question: 'Распространяется ли закон на посты в Instagram*?',
+    question: 'Распространяется ли закон на посты в соц. сетях?',
     answer: 'Да, если в посте вы информируете о ценах, условиях доставки, проводите конкурс с правилами. Личные блоги без коммерции — вне зоны риска, но малейший намек на предпринимательскую деятельность — и пост должен быть на русском.'
   },
   {
@@ -94,35 +95,37 @@ export default function LawPage() {
       />
 
       {/* HERO SECTION */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary-900 via-primary-800 to-gray-900 text-white">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.03%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20" />
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary-800 via-primary-700 to-primary-900 text-white">
+        {/* Декоративные элементы (круги как на референсе) */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent-500/20 rounded-full translate-y-1/2 -translate-x-1/2" />
         
-        <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
-          <div className="max-w-4xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-500/20 border border-red-500/30 rounded-full text-sm font-medium mb-6 text-red-200">
-              <ExclamationTriangleIcon className="w-4 h-4" />
+        <div className="container mx-auto px-4 py-20 md:py-32 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-sm font-medium mb-6 backdrop-blur-sm">
+              <ExclamationTriangleIcon className="w-4 h-4 text-accent-400" />
               <span>Штрафы с 1 марта 2026 года</span>
             </div>
             
-            <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-6">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
               Закон 168‑ФЗ о русском языке: <span className="text-accent-400">полный разбор для бизнеса</span>
             </h1>
             
-            <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed max-w-3xl mx-auto">
               С 1 марта 2026 года вступают в силу поправки, которые обязывают бизнес дублировать на русском языке любую публичную информацию — от вывески кафе до интерфейса мобильного приложения. 
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
                 href="#order-form"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent-500 hover:bg-accent-600 text-white font-bold rounded-lg transition-all shadow-lg hover:shadow-xl text-center"
+                className="max-w-[500px] w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent-500 hover:bg-accent-600 text-white font-bold rounded-lg transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
               >
                 Бесплатный аудит сайта
                 <ArrowRightIcon className="w-5 h-5" />
               </Link>
               <Link
                 href="#faq"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg transition-all border border-white/20 text-center"
+                className="max-w-[500px] w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent border-2 border-white/30 hover:border-white text-white font-semibold rounded-lg transition-all hover:bg-white/10"
               >
                 Читать FAQ
               </Link>
@@ -132,58 +135,69 @@ export default function LawPage() {
       </section>
 
       {/* TIMELINE SECTION */}
-      <section className="py-16 bg-white border-b border-gray-200">
+      <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-12">
             Хронология принятия закона
           </h2>
           
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-2xl mx-auto">
             <div className="relative">
-              {/* Линия таймлайна (десктоп) */}
-              <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-primary-200" />
+              {/* Вертикальная линия */}
+              <div className="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-200 via-primary-300 to-accent-400" />
               
-              <div className="space-y-8 md:space-y-12">
+              <div className="space-y-8">
                 {/* Этап 1 */}
-                <div className="relative flex flex-col md:flex-row items-center md:justify-between">
-                  <div className="md:w-5/12 md:text-right mb-4 md:mb-0">
-                    <h3 className="text-lg font-bold text-gray-900">17 июня 2025</h3>
-                    <p className="text-gray-600">Принят Госдумой</p>
-                  </div>
-                  <div className="absolute left-8 md:left-1/2 md:-translate-x-1/2 w-4 h-4 bg-primary-600 rounded-full border-4 border-white shadow-lg z-10" />
-                  <div className="md:w-5/12 pl-16 md:pl-0">
-                    <div className="bg-cream-50 p-4 rounded-lg border border-stone-200">
-                      <p className="text-sm text-gray-700">Закон проходит первое чтение и принят в целом</p>
+                <div className="relative flex items-start gap-6 md:gap-0">
+                  <div className="hidden md:block md:w-1/2 md:pr-12 md:text-right">
+                    <div className="bg-cream-50 p-5 rounded-xl border border-stone-200 inline-block text-left">
+                      <h3 className="text-lg font-bold text-gray-900 mb-1">17 июня 2025</h3>
+                      <p className="text-gray-600 text-sm">Принят Госдумой</p>
+                      <p className="text-gray-500 text-sm mt-2">Закон проходит первое чтение и принят в целом</p>
                     </div>
                   </div>
+                  <div className="absolute left-4 md:left-1/2 md:-translate-x-1/2 w-3 h-3 bg-primary-500 rounded-full border-4 border-white shadow-md z-10 mt-1.5" />
+                  <div className="md:hidden ml-12 flex-1">
+                    <div className="bg-cream-50 p-5 rounded-xl border border-stone-200">
+                      <h3 className="text-lg font-bold text-gray-900 mb-1">17 июня 2025</h3>
+                      <p className="text-gray-600 text-sm">Принят Госдумой</p>
+                      <p className="text-gray-500 text-sm mt-2">Закон проходит первое чтение и принят в целом</p>
+                    </div>
+                  </div>
+                  <div className="hidden md:block md:w-1/2 md:pl-12" />
                 </div>
 
                 {/* Этап 2 */}
-                <div className="relative flex flex-col md:flex-row items-center md:justify-between">
-                  <div className="md:w-5/12 md:text-right mb-4 md:mb-0 md:order-1 order-3">
-                    <div className="bg-cream-50 p-4 rounded-lg border border-stone-200">
-                      <p className="text-sm text-gray-700">Официальное опубликование и начало подготовительного периода</p>
+                <div className="relative flex items-start gap-6 md:gap-0">
+                  <div className="hidden md:block md:w-1/2 md:pr-12" />
+                  <div className="absolute left-4 md:left-1/2 md:-translate-x-1/2 w-3 h-3 bg-primary-500 rounded-full border-4 border-white shadow-md z-10 mt-1.5" />
+                  <div className="ml-12 md:ml-0 md:w-1/2 md:pl-12 flex-1">
+                    <div className="bg-cream-50 p-5 rounded-xl border border-stone-200">
+                      <h3 className="text-lg font-bold text-gray-900 mb-1">24 июня 2025</h3>
+                      <p className="text-gray-600 text-sm">Подписан президентом</p>
+                      <p className="text-gray-500 text-sm mt-2">Официальное опубликование и начало подготовительного периода</p>
                     </div>
-                  </div>
-                  <div className="absolute left-8 md:left-1/2 md:-translate-x-1/2 w-4 h-4 bg-primary-600 rounded-full border-4 border-white shadow-lg z-10 order-2" />
-                  <div className="md:w-5/12 pl-16 md:pl-0 md:order-3 order-1">
-                    <h3 className="text-lg font-bold text-gray-900">24 июня 2025</h3>
-                    <p className="text-gray-600">Подписан президентом</p>
                   </div>
                 </div>
 
                 {/* Этап 3 */}
-                <div className="relative flex flex-col md:flex-row items-center md:justify-between">
-                  <div className="md:w-5/12 md:text-right mb-4 md:mb-0">
-                    <h3 className="text-lg font-bold text-accent-600">1 марта 2026</h3>
-                    <p className="text-gray-600">Вступление в силу</p>
-                  </div>
-                  <div className="absolute left-8 md:left-1/2 md:-translate-x-1/2 w-6 h-6 bg-accent-500 rounded-full border-4 border-white shadow-xl z-10 animate-pulse" />
-                  <div className="md:w-5/12 pl-16 md:pl-0">
-                    <div className="bg-red-50 border border-red-200 p-4 rounded-lg">
-                      <p className="text-sm text-red-800 font-medium">Основные положения вступают в силу. Начало проверок Роспотребнадзором и ФАС.</p>
+                <div className="relative flex items-start gap-6 md:gap-0">
+                  <div className="hidden md:block md:w-1/2 md:pr-12 md:text-right">
+                    <div className="bg-red-50 p-5 rounded-xl border border-red-200 inline-block text-left">
+                      <h3 className="text-lg font-bold text-red-700 mb-1">1 марта 2026</h3>
+                      <p className="text-red-600 text-sm font-medium">Вступление в силу</p>
+                      <p className="text-red-500 text-sm mt-2">Основные положения вступают в силу. Начало проверок Роспотребнадзором и ФАС.</p>
                     </div>
                   </div>
+                  <div className="absolute left-4 md:left-1/2 md:-translate-x-1/2 w-4 h-4 bg-accent-500 rounded-full border-4 border-white shadow-lg z-10 mt-1" />
+                  <div className="md:hidden ml-12 flex-1">
+                    <div className="bg-red-50 p-5 rounded-xl border border-red-200">
+                      <h3 className="text-lg font-bold text-red-700 mb-1">1 марта 2026</h3>
+                      <p className="text-red-600 text-sm font-medium">Вступление в силу</p>
+                      <p className="text-red-500 text-sm mt-2">Основные положения вступают в силу. Начало проверок Роспотребнадзором и ФАС.</p>
+                    </div>
+                  </div>
+                  <div className="hidden md:block md:w-1/2 md:pl-12" />
                 </div>
               </div>
             </div>
@@ -472,10 +486,6 @@ export default function LawPage() {
             Ответы на ключевые вопросы владельцев бизнеса
           </p>
           <FAQAccordion items={faqData} />
-          
-          <p className="text-xs text-gray-400 mt-8 text-center">
-            * Instagram принадлежит компании Meta, признанной экстремистской организацией в РФ
-          </p>
         </div>
       </section>
 
@@ -488,7 +498,6 @@ export default function LawPage() {
             </h2>
             <p className="text-lg text-gray-200">
               Штрафы уже с 1 марта 2026 года могут достигать <span className="text-accent-400 font-bold">500 000 рублей</span> за каждый факт нарушения. 
-              Наши юристы проанализируют ваш сайт за 24 часа.
             </p>
           </div>
           
@@ -501,15 +510,7 @@ export default function LawPage() {
             
             {/* Здесь можно вставить OrderForm или сделать упрощенную версию */}
             <div className="space-y-4">
-              <Link 
-                href="/"
-                className="block w-full py-4 bg-accent-500 hover:bg-accent-600 text-white font-bold rounded-lg text-center transition-colors"
-              >
-                Получить бесплатный аудит
-              </Link>
-              <p className="text-xs text-center text-gray-500">
-                Или позвоните: <a href="tel:88000000000" className="text-primary-700 font-medium">8 (800) XXX-XX-XX</a>
-              </p>
+             <LeadForm />
             </div>
           </div>
           
@@ -527,16 +528,6 @@ export default function LawPage() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="bg-gray-950 text-gray-400 py-8 border-t border-gray-800">
-        <div className="container mx-auto px-4 text-center text-sm">
-          <p>© 2026 Слова по-русски. Все права защищены.</p>
-          <div className="mt-2 space-x-4">
-            <Link href="/" className="hover:text-white transition-colors">Главная</Link>
-            <Link href="/privacy" className="hover:text-white transition-colors">Политика конфиденциальности</Link>
-          </div>
-        </div>
-      </footer>
     </main>
   );
 }

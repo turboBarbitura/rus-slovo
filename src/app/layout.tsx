@@ -4,6 +4,7 @@ import "./globals.css";
 import {YmInitializer} from "@/components/YMInit";
 import {YMasterInitializer} from "@/components/YMasterInit";
 import {ReactNode} from "react";
+import { Footer } from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <Footer />
         <YmInitializer/>
         <YMasterInitializer/>
       </body>

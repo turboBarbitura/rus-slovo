@@ -31,11 +31,11 @@ const faqData = [
   },
   {
     question: 'Как адаптация повлияет на трафик? Не выпаду ли я из выдачи?',
-    answer: 'Это главный страх наших клиентов. Именно поэтому мы делаем A/B-тестирование на тестовой среде и меняем тексты партиями. Мы не просто переводим, мы делаем рерайт с сохранением семантики. В 95% случаев позиции остаются неизменными или растут.'
+    answer: 'Это главный страх наших клиентов. Мы не просто переводим, мы делаем рерайт с сохранением семантики. В 95% случаев позиции остаются неизменными или растут.'
   },
   {
     question: 'Вы даете гарантию, что штрафа не будет?',
-    answer: 'Мы даем гарантию соответствия вашего сайта букве закона на момент сдачи работ. Если после нашей адаптации придет штраф из-за контента, мы оплатим его сами (пункт 7.4 договора).'
+    answer: 'Мы даем гарантию соответствия вашего сайта букве закона на момент сдачи работ.'
   }
 ];
 
@@ -191,33 +191,79 @@ export default function HomePage() {
       </section>
 
       {/* PROCESS SECTION */}
-      <section className="py-16 md:py-24 bg-cream-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Как мы адаптируем сайт, чтобы Google и Яндекс не заметили подмены
+      <section className="py-20 md:py-28 bg-cream-50 relative overflow-hidden">
+        {/* Декоративные элементы фона */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-100/30 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent-100/40 rounded-full blur-3xl" />
+        
+        <div className="container mx-auto px-4 relative z-10">
+          {/* Заголовок секции */}
+          <div className="text-center mb-16 md:mb-20">
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-primary-100 text-primary-800 rounded-full text-sm font-semibold mb-6">
+              <ChartBarIcon className="w-4 h-4" />
+              Процесс работы
+            </span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+              Как мы адаптируем сайт, чтобы{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-700 to-primary-800">
+                Google и Яндекс
+              </span>{' '}
+              не заметили подмены
             </h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Четыре простых шага от аудита до полной защиты от штрафов
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          {/* Сетка шагов */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-6xl mx-auto">
             {[
-              { num: '01', title: 'Бесплатный аудит', desc: 'Сканируем сайт на наличие англицизмов и «стоп-слов»' },
-              { num: '02', title: 'Точная смета', desc: 'Фиксируем цену в договоре, без доплат' },
-              { num: '03', title: 'Договор и гарантии', desc: 'Подписываем письменное обязательство сохранности SEO-позиций' },
-              { num: '04', title: 'Тестовая среда', desc: 'Копируем ваш сайт на наш стенд (dev-среду)' },
-              { num: '05', title: 'A/B-тестирование', desc: 'Запускаем старую и новую версии на фокус-группе' },
-              { num: '06', title: 'Поэтапное развёртывание', desc: 'Вносим правки частями, чтобы отследить динамику' },
-              { num: '07', title: 'Финальная проверка', desc: 'Юридический аудит и финальный отчет' },
-              { num: '08', title: 'Постгарантийное сопровождение', desc: 'Отвечаем на вопросы ФАС 3 месяца' },
+              { num: '01', title: 'Бесплатный аудит', desc: 'Сканируем сайт на наличие англицизмов и оцениваем объём работ' },
+              { num: '02', title: 'Точная смета', desc: 'Фиксируем цену в договоре — никаких скрытых платежей и доплат' },
+              { num: '03', title: 'Финальная проверка', desc: 'Юридический аудит и детальный отчёт о выполненных работах' },
+              { num: '04', title: 'Постгарантийное сопровождение', desc: 'Отвечаем на вопросы ФАС и помогаем 3 месяца после сдачи' },
             ].map((step, idx) => (
-              <div key={idx} className="bg-white p-6 rounded-xl border border-stone-200 hover:border-primary-300 hover:shadow-lg transition-all group">
-                <span className="text-4xl font-bold text-primary-200 group-hover:text-primary-300 transition-colors">
-                  {step.num}
-                </span>
-                <h3 className="text-lg font-bold text-gray-900 mt-2 mb-2">{step.title}</h3>
-                <p className="text-sm text-gray-600">{step.desc}</p>
+              <div 
+                key={idx} 
+                className="relative bg-white rounded-2xl p-6 lg:p-8 shadow-sm border border-stone-100 overflow-hidden"
+              >
+                {/* Верхняя акцентная полоса */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 to-accent-400" />
+                
+                {/* Контент */}
+                <div>
+                  {/* Номер шага */}
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="text-5xl lg:text-6xl font-black text-primary-100 leading-none">
+                      {step.num}
+                    </span>
+                    {/* <div className="w-10 h-10 rounded-full bg-primary-50 flex items-center justify-center">
+                      <ArrowRightIcon className="w-5 h-5 text-primary-600" />
+                    </div> */}
+                  </div>
+                  
+                  {/* Заголовок и описание */}
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {step.desc}
+                  </p>
+                </div>
+
+                {/* Декоративный уголок */}
+                <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-accent-400/10 rounded-full blur-2xl" />
               </div>
             ))}
+          </div>
+
+          {/* Соединительные линии (только на десктопе) */}
+          <div className="hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-8 w-3/4 max-w-4xl">
+            <div className="flex justify-between px-12">
+              {[0, 1, 2].map((i) => (
+                <div key={i} className="w-24 h-0.5 bg-gradient-to-r from-primary-200 to-accent-200" />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -230,13 +276,13 @@ export default function HomePage() {
           </h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-            <div className="text-center p-6">
+            {/* <div className="text-center p-6">
               <div className="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <ShieldCheckIcon className="w-8 h-8 text-primary-700" />
               </div>
               <h3 className="font-bold text-gray-900 mb-2">Письменная гарантия SEO</h3>
               <p className="text-sm text-gray-600">Если трафик упадет — вернем деньки и бесплатно исправим</p>
-            </div>
+            </div> */}
 
             <div className="text-center p-6">
               <div className="w-16 h-16 bg-accent-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -308,49 +354,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="bg-gray-900 text-gray-300 py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
-            <div>
-              <h3 className="text-white font-bold text-xl mb-4">Слова по-русски</h3>
-              <p className="text-sm text-gray-400 mb-4">
-                Профессиональная адаптация сайтов под требования 168-ФЗ с сохранением SEO-позиций.
-              </p>
-              <div className="space-y-2">
-                <p className="flex items-center gap-2">📞 8 (800) XXX-XX-XX</p>
-                <p className="flex items-center gap-2">✉️ info@slova-po-russki.ru</p>
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="text-white font-semibold mb-4">Навигация</h4>
-              <nav className="space-y-2">
-                <Link href="/law-168-fz" className="block hover:text-white transition-colors">Закон 168-ФЗ</Link>
-                <Link href="/audit" className="block hover:text-white transition-colors">Бесплатный аудит</Link>
-                <Link href="/services" className="block hover:text-white transition-colors">Услуги и цены</Link>
-                <Link href="/cases" className="block hover:text-white transition-colors">Кейсы</Link>
-                <Link href="/contacts" className="block hover:text-white transition-colors">Контакты</Link>
-              </nav>
-            </div>
-            
-            <div>
-              <h4 className="text-white font-semibold mb-4">О компании</h4>
-              <p className="text-sm text-gray-400">
-                © 2026 Слова по-русски. Все права защищены.
-              </p>
-              <div className="mt-4 space-y-2 text-sm">
-                <Link href="/privacy" className="block hover:text-white transition-colors">Политика конфиденциальности</Link>
-                <Link href="/terms" className="block hover:text-white transition-colors">Пользовательское соглашение</Link>
-              </div>
-            </div>
-          </div>
-          
-          <div className="border-t border-gray-800 pt-8 text-center text-sm text-gray-500">
-            <p>Не является публичной офертой. Все данные защищены.</p>
-          </div>
-        </div>
-      </footer>
     </main>
   );
 }
