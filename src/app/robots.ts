@@ -1,12 +1,17 @@
-import { MetadataRoute } from "next"
+import { MetadataRoute } from 'next';
+
 export default function robots(): MetadataRoute.Robots {
-    return {
-        rules: [
-            {
-                userAgent: "*",
-                allow: "/",
-            },
-        ],
-        sitemap: `https://slova-po-russki.ru/sitemap.xml`,
-    }
+  const baseUrl = 'https://slova-po-russki.ru';
+  
+  return {
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/api/', '/_next/', '/privacy'],
+      },
+    ],
+    sitemap: `${baseUrl}/sitemap.xml`,
+    host: baseUrl,
+  };
 }
