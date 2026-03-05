@@ -19,26 +19,26 @@ export default function CostCalculator() {
     urgency: 'base',
   });
 
-  const basePrices: Record<SiteType, number> = {
+  const basePrices = useMemo<Record<SiteType, number>>(() => ({
     landing: 15000,
     corporate: 35000,
     shop: 65000,
     marketplace: 100000,
     custom: 80000,
-  };
+  }), []);
 
-  const siteTypeLabels: Record<SiteType, string> = {
+  const siteTypeLabels = useMemo<Record<SiteType, string>>(() => ({
     landing: 'Лендинг / Визитка (до 5 стр.)',
     corporate: 'Сайт услуг / Корпоративный сайт',
     shop: 'Интернет-магазин (до 1000 товаров)',
     marketplace: 'Интернет-магазин (1000+) / Маркетплейс',
     custom: 'Уникальный дизайн / Сложная CMS',
-  };
+  }), []);
 
   const calculatedPrice = useMemo(() => {
     if (!state.siteType) return 0;
     
-    let base = basePrices[state.siteType];
+    const base = basePrices[state.siteType];
     let multiplier = 1;
 
     if (state.extras.includes('app')) multiplier += 0.3;
@@ -47,7 +47,7 @@ export default function CostCalculator() {
     if (state.urgency === 'vip') multiplier += 0.3;
 
     return Math.round(base * multiplier);
-  }, [state]);
+  }, [state, basePrices]);
 
   const toggleExtra = (extra: string) => {
     setState(prev => ({
