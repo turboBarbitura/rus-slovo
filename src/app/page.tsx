@@ -1,8 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 
-import { 
-  ShieldCheckIcon, 
+import {
   ChartBarIcon, 
   ClockIcon, 
   AcademicCapIcon,
